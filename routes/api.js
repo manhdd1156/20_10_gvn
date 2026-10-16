@@ -42,51 +42,96 @@ router.get('/gifts', (req, res) => {
   res.json(gifts);
 });
 
+// Get all users summary (for heart loading collage)
+router.get('/users-summary', (req, res) => {
+  const users = db.getUsers().map(u => ({
+    ldap: u.ldap,
+    display_name: u.display_name,
+    avatar: u.avatar || ''
+  }));
+  res.json(users);
+});
+
+// Danh sách quà chỉ định trực tiếp cho người cố định
+const DESIGNATED_GIFTS = {
+  'ntdung36': 4,  // Găng tay tẩy tế bào
+  'tkhuyen': 5,   // Phấn má hồng
+  'dklinh': 10    // Mascara Browit
+};
+
 // Spin the wheel
-router.post('/spin', (req, res) => {
-  const { ldap } = req.body;
-  if (!ldap) return res.status(400).json({ error: 'Missing LDAP' });
+router.post('/spin', (req, res, next) => {
+  try {
+    const { ldap } = req.body;
+    if (!ldap) return res.status(400).json({ error: 'Missing LDAP' });
 
-  const user = db.getUserByLdap(ldap);
-  if (!user) return res.status(404).json({ error: 'User not found' });
+    const user = db.getUserByLdap(ldap);
+    if (!user) return res.status(404).json({ error: 'User not found' });
 
-  if (user.spun) {
-    const gift = db.getGiftById(user.gift_id);
-    return res.json({ success: false, already_spun: true, gift });
-  }
-
-  // Get active gifts with remaining > 0
-  const gifts = db.getActiveGifts().filter(g => (g.remaining || 0) > 0);
-  if (gifts.length === 0) {
-    return res.json({ success: false, message: 'Hiện tại đã hết quà trong kho!' });
-  }
-
-  // Weighted random selection
-  const totalWeight = gifts.reduce((sum, g) => sum + (Number(g.weight) || 1), 0);
-  let rand = Math.random() * totalWeight;
-  let selectedGift = gifts[gifts.length - 1];
-  for (const gift of gifts) {
-    rand -= (Number(gift.weight) || 1);
-    if (rand <= 0) {
-      selectedGift = gift;
-      break;
+    if (user.spun) {
+      const gift = db.getGiftById(user.gift_id);
+      return res.json({ success: false, already_spun: true, gift });
     }
+
+    const userLdapClean = user.ldap.toLowerCase().trim();
+    let selectedGift = null;
+
+    // 1. Kiểm tra nếu user nằm trong danh sách chỉ định trực tiếp
+    if (DESIGNATED_GIFTS[userLdapClean]) {
+      const designatedGiftId = DESIGNATED_GIFTS[userLdapClean];
+      const targetGift = db.getGiftById(designatedGiftId);
+      if (targetGift && (targetGift.remaining || 0) > 0) {
+        selectedGift = targetGift;
+      }
+    }
+
+    // 2. Nếu không thuộc danh sách chỉ định: chọn ngẫu nhiên theo số lượng còn lại
+    if (!selectedGift) {
+      // Loại bỏ các món quà đã được chỉ định (id 4, 5, 10) để bảo vệ quà riêng
+      const designatedGiftIds = Object.values(DESIGNATED_GIFTS);
+      const poolGifts = db.getActiveGifts().filter(g => 
+        !designatedGiftIds.includes(Number(g.id)) && (g.remaining || 0) > 0
+      );
+
+      if (poolGifts.length === 0) {
+        return res.json({ success: false, message: 'Hiện tại đã hết quà trong kho!' });
+      }
+
+      // Chia đều tỉ lệ theo số lượng quà còn lại (remaining)
+      const totalRemaining = poolGifts.reduce((sum, g) => sum + (Number(g.remaining) || 0), 0);
+      let rand = Math.random() * totalRemaining;
+      selectedGift = poolGifts[poolGifts.length - 1];
+
+      for (const gift of poolGifts) {
+        rand -= (Number(gift.remaining) || 0);
+        if (rand <= 0) {
+          selectedGift = gift;
+          break;
+        }
+      }
+    }
+
+    if (!selectedGift) {
+      return res.json({ success: false, message: 'Hiện tại đã hết quà trong kho!' });
+    }
+
+    // Save result
+    const now = new Date().toISOString();
+    db.updateUser(user.ldap, {
+      spun: 1,
+      gift_id: selectedGift.id,
+      spun_at: now
+    });
+
+    const newRemaining = Math.max(0, (selectedGift.remaining || 1) - 1);
+    db.updateGift(selectedGift.id, {
+      remaining: newRemaining
+    });
+
+    res.json({ success: true, gift: selectedGift });
+  } catch (err) {
+    next(err);
   }
-
-  // Save result
-  const now = new Date().toISOString();
-  db.updateUser(user.ldap, {
-    spun: 1,
-    gift_id: selectedGift.id,
-    spun_at: now
-  });
-
-  const newRemaining = Math.max(0, (selectedGift.remaining || 1) - 1);
-  db.updateGift(selectedGift.id, {
-    remaining: newRemaining
-  });
-
-  res.json({ success: true, gift: selectedGift });
 });
 
 module.exports = router;

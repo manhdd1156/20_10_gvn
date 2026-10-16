@@ -4,8 +4,8 @@
       "id": 1,
       "ldap": "dlphuong1",
       "display_name": "Lan Phương",
-      "wish": "Anh em GVN chúc chị Phương 20/10 thật vui bên gia đình ạ\nChúc chị lên GLead dẫn team thắng lớn, tiền tài danh vọng đều lên theo nha chị!",
-      "avatar": "",
+      "wish": "Anh em GVN chúc chị Phương 20/10 thật vui bên gia đình ạ\r\nChúc chị lên GLead dẫn team thắng lớn, tiền tài danh vọng đều lên theo nha chị!",
+      "avatar": "/uploads/1792179571850_cropped.jpg",
       "spun": 0,
       "gift_id": null,
       "spun_at": null
@@ -15,7 +15,7 @@
       "ldap": "mkly",
       "display_name": "Khánh Ly",
       "wish": "20/10, anh em GVN chúc chị Ly được cả nhà chiều chuộng, ồ ạt quà tặng ạ\nChúc chị vượt số anh Hưng giao nha ạ",
-      "avatar": "",
+      "avatar": "./uploads/avatars/mkly.png",
       "spun": 0,
       "gift_id": null,
       "spun_at": null
@@ -25,17 +25,17 @@
       "ldap": "nttan3",
       "display_name": "Thu An",
       "wish": "Anh em GVN chúc chị An 20/10 nhận được quà mình thích, có một ngày thật vui ạ.\nChúc chị luôn khỏe, có nhiều thời gian cho bản thân và làm được những điều mình muốn ạ",
-      "avatar": "",
-      "spun": 1,
-      "gift_id": 7,
-      "spun_at": "2026-10-15T08:10:53.724Z"
+      "avatar": "./uploads/avatars/nttan3.png",
+      "spun": 0,
+      "gift_id": null,
+      "spun_at": null
     },
     {
       "id": 4,
       "ldap": "npthanh",
       "display_name": "Phương Thanh",
-      "wish": "Anh em GVN chúc chị Thanh 20/10 thật vui bên gia đình ạ.\nChúc chị ngày càng được chồng chiều, ngày thường cũng vui như ngày lễ nha chị!",
-      "avatar": "",
+      "wish": "Anh em GVN chúc chị Thanh 20/10 thật vui bên gia đình ạ.\r\nChúc chị ngày càng được chồng chiều, ngày thường cũng vui như ngày lễ nha chị!",
+      "avatar": "/uploads/1792179654144_cropped.jpg",
       "spun": 0,
       "gift_id": null,
       "spun_at": null
@@ -44,8 +44,8 @@
       "id": 5,
       "ldap": "ntmanh2",
       "display_name": "Mai Anh",
-      "wish": "20/10, anh em GVN chúc chị Mai Anh nhận đúng món quà mình thích, có một ngày thật vui ạ.\nChúc chị sớm có người thương thật hợp ý, anh em GVN đang chờ nhận thiệp rùi ạ!",
-      "avatar": "",
+      "wish": "20/10, anh em GVN chúc chị Mai Anh nhận đúng món quà mình thích, có một ngày thật vui ạ.\r\nChúc chị sớm có người thương thật hợp ý, anh em GVN đang chờ nhận thiệp rùi ạ!",
+      "avatar": "/uploads/1792179765913_cropped.jpg",
       "spun": 0,
       "gift_id": null,
       "spun_at": null
@@ -54,8 +54,8 @@
       "id": 6,
       "ldap": "ttnchau",
       "display_name": "Ngọc Châu",
-      "wish": "20/10, anh em GVN chúc em Châu nhiều quà, nhiều tiếng cười nhé.\nChúc em chốt số đều tay, số về ồ ạt nha!",
-      "avatar": "",
+      "wish": "20/10, anh em GVN chúc em Châu nhiều quà, nhiều tiếng cười nhé.\r\nChúc em chốt số đều tay, số về ồ ạt nha!",
+      "avatar": "/uploads/1792179779844_cropped.jpg",
       "spun": 0,
       "gift_id": null,
       "spun_at": null
@@ -64,8 +64,8 @@
       "id": 7,
       "ldap": "nbkhanh6",
       "display_name": "Bảo Khánh",
-      "wish": "Anh em GVN chúc em Khánh 20/10 nhận được món quà mình thích, có một ngày thật vui nhé.\nChúc em ngày nào cũng có chuyện vui để kể, năm nay nổ số thật to nha!",
-      "avatar": "",
+      "wish": "Anh em GVN chúc em Khánh 20/10 nhận được món quà mình thích, có một ngày thật vui nhé.\r\nChúc em ngày nào cũng có chuyện vui để kể, năm nay nổ số thật to nha!",
+      "avatar": "/uploads/1792179793699_cropped.jpg",
       "spun": 0,
       "gift_id": null,
       "spun_at": null
@@ -74,8 +74,8 @@
       "id": 8,
       "ldap": "tttdieu1",
       "display_name": "Thúy Diệu",
-      "wish": "Anh em GVN chúc chị Diệu 20/10 thật vui bên gia đình ạ.\nChúc chị luôn khỏe, nhiều năng lượng để dẫn dắt đàn em thơ team LEB ngày càng cứng cáp nha chị!",
-      "avatar": "",
+      "wish": "Anh em GVN chúc chị Diệu 20/10 thật vui bên gia đình ạ.\r\nChúc chị luôn khỏe, nhiều năng lượng để dẫn dắt đàn em thơ team LEB ngày càng cứng cáp nha chị!",
+      "avatar": "/uploads/1792179801329_cropped.jpg",
       "spun": 0,
       "gift_id": null,
       "spun_at": null
@@ -84,8 +84,8 @@
       "id": 9,
       "ldap": "tkhuyen",
       "display_name": "Khánh Huyền",
-      "wish": "Anh em GVN chúc chị Huyền 20/10 thật vui, quà nhận đầy tay ạ.\nChúc chị có nhiều niềm vui trong cuộc sống và làm được nhiều điều mình muốn hơn ạ",
-      "avatar": "",
+      "wish": "Anh em GVN chúc chị Huyền 20/10 thật vui, quà nhận đầy tay ạ.\r\nChúc chị có nhiều niềm vui trong cuộc sống và làm được nhiều điều mình muốn hơn ạ",
+      "avatar": "/uploads/1792179811542_cropped.jpg",
       "spun": 0,
       "gift_id": null,
       "spun_at": null
@@ -94,8 +94,8 @@
       "id": 10,
       "ldap": "ldyduyen",
       "display_name": "Yến Duyên",
-      "wish": "20/10, anh em GVN chúc chị Duyên nhận được món quà mình thích ạ\nChúc chị có nhiều sức khỏe và nhiều niềm vui hơn trong cuộc sống ạ",
-      "avatar": "",
+      "wish": "20/10, anh em GVN chúc chị Duyên nhận được món quà mình thích ạ\r\nChúc chị có nhiều sức khỏe và nhiều niềm vui hơn trong cuộc sống ạ",
+      "avatar": "/uploads/1792179822383_cropped.jpg",
       "spun": 0,
       "gift_id": null,
       "spun_at": null
@@ -104,8 +104,8 @@
       "id": 11,
       "ldap": "lpthao12",
       "display_name": "Phương Thảo Lê",
-      "wish": "Anh em GVN chúc em Thảo Lê 20/10 thật vui, nhận nhiều quà nhé.\nChúc em có thật nhiều niềm vui và sớm báo tin để anh em GVN còn lên đồ đi ăn tiệc nha!",
-      "avatar": "",
+      "wish": "Anh em GVN chúc em Thảo Lê 20/10 thật vui, nhận nhiều quà nhé.\r\nChúc em có thật nhiều niềm vui và sớm báo tin để anh em GVN còn lên đồ đi ăn tiệc nha!",
+      "avatar": "/uploads/1792179838644_cropped.jpg",
       "spun": 0,
       "gift_id": null,
       "spun_at": null
@@ -115,7 +115,7 @@
       "ldap": "ttpthao6",
       "display_name": "Phương Thảo Tiêu",
       "wish": "Anh em GVN chúc em Thảo Tiêu 20/10 thật vui, luôn khỏe và nhiều năng lượng nhé.",
-      "avatar": "",
+      "avatar": "/uploads/1792179860056_cropped.jpg",
       "spun": 0,
       "gift_id": null,
       "spun_at": null
@@ -124,8 +124,8 @@
       "id": 13,
       "ldap": "ttchinh1",
       "display_name": "Chinh Trần",
-      "wish": "Anh em GVN chúc chị Chinh 20/10 thật vui, luôn khỏe và được cả nhà chiều chuộng ạ.\nChúc chị có thêm thời gian làm những điều mình thích, ngày nào cũng có một chuyện vui nho nhỏ nha chị!",
-      "avatar": "",
+      "wish": "Anh em GVN chúc chị Chinh 20/10 thật vui, luôn khỏe và được cả nhà chiều chuộng ạ.\r\nChúc chị có thêm thời gian làm những điều mình thích, ngày nào cũng có một chuyện vui nho nhỏ nha chị!",
+      "avatar": "/uploads/1792179892783_cropped.jpg",
       "spun": 0,
       "gift_id": null,
       "spun_at": null
@@ -134,8 +134,8 @@
       "id": 14,
       "ldap": "dlnhi",
       "display_name": "Linh Nhi",
-      "wish": "Anh em GVN chúc chị Nhi 20/10 thật vui, quà nhận đầy tay ạ.\nChúc chị công việc thuận lợi, sớm đạt được những mục tiêu mình đặt ra ạ",
-      "avatar": "",
+      "wish": "Anh em GVN chúc chị Nhi 20/10 thật vui, quà nhận đầy tay ạ.\r\nChúc chị công việc thuận lợi, sớm đạt được những mục tiêu mình đặt ra ạ",
+      "avatar": "/uploads/1792179907842_cropped.jpg",
       "spun": 0,
       "gift_id": null,
       "spun_at": null
@@ -144,8 +144,8 @@
       "id": 15,
       "ldap": "nqchi4",
       "display_name": "Quỳnh Chi",
-      "wish": "20/10, anh em GVN chúc chị Chi một ngày thật tưng bừng, nhiều quà, nhiều tiếng cười ạ.\nChúc chị luôn khỏe, luôn vui, tài khoản tăng đều để thích gì cũng có thể tự thưởng nha chị!",
-      "avatar": "",
+      "wish": "20/10, anh em GVN chúc chị Chi một ngày thật tưng bừng, nhiều quà, nhiều tiếng cười ạ.\r\nChúc chị luôn khỏe, luôn vui, tài khoản tăng đều để thích gì cũng có thể tự thưởng nha chị!",
+      "avatar": "/uploads/1792179921297_cropped.jpg",
       "spun": 0,
       "gift_id": null,
       "spun_at": null
@@ -154,8 +154,8 @@
       "id": 16,
       "ldap": "dklinh",
       "display_name": "Kaity",
-      "wish": "anh em GVN chúc chị Kaity có một dịp 20/10 vui vẻ cùng gia đình ạ\nchúc chị có nhiều sức khỏe và nhiều niềm vui trong cuộc sống ạ",
-      "avatar": "",
+      "wish": "anh em GVN chúc chị Kaity có một dịp 20/10 vui vẻ cùng gia đình ạ\r\nchúc chị có nhiều sức khỏe và nhiều niềm vui trong cuộc sống ạ",
+      "avatar": "/uploads/1792179942535_cropped.jpg",
       "spun": 0,
       "gift_id": null,
       "spun_at": null
@@ -164,8 +164,8 @@
       "id": 17,
       "ldap": "dhvan6",
       "display_name": "Cristy",
-      "wish": "anh em GVN chúc chị Cristy có một dịp 20/10 vui vẻ nhiều sức khỏe ạ\nchúc chị cùng chồng sắp cưới trăm năm hạnh phúc nha ạ",
-      "avatar": "",
+      "wish": "anh em GVN chúc chị Cristy có một dịp 20/10 vui vẻ nhiều sức khỏe ạ\r\nchúc chị cùng chồng sắp cưới trăm năm hạnh phúc nha ạ",
+      "avatar": "/uploads/1792179961441_cropped.jpg",
       "spun": 0,
       "gift_id": null,
       "spun_at": null
@@ -174,8 +174,8 @@
       "id": 18,
       "ldap": "pnanh8",
       "display_name": "Ngọc Anh",
-      "wish": "Anh em GVN chúc chị Anna 20/10 thật vui bên gia đình ạ.\nChúc chị luôn khỏe, trình pickleball lên đều để ra sân là anh em tranh nhau xin cùng đội nha chị!",
-      "avatar": "",
+      "wish": "Anh em GVN chúc chị Anna 20/10 thật vui bên gia đình ạ.\r\nChúc chị luôn khỏe, trình pickleball lên đều để ra sân là anh em tranh nhau xin cùng đội nha chị!",
+      "avatar": "./uploads/avatars/pnanh8.png",
       "spun": 0,
       "gift_id": null,
       "spun_at": null
@@ -184,8 +184,8 @@
       "id": 19,
       "ldap": "dthvan",
       "display_name": "Hanna",
-      "wish": "Anh em GVN chúc chị Hanna 20/10 thật vui bên gia đình ạ.\nChúc chị luôn khỏe mạnh, giữ đều lịch ra sân đánh pick cùng mọi người nha ạ!",
-      "avatar": "",
+      "wish": "Anh em GVN chúc chị Hanna 20/10 thật vui bên gia đình ạ.\r\nChúc chị luôn khỏe mạnh, giữ đều lịch ra sân đánh pick cùng mọi người nha ạ!",
+      "avatar": "/uploads/1792179973810_cropped.jpg",
       "spun": 0,
       "gift_id": null,
       "spun_at": null
@@ -194,8 +194,8 @@
       "id": 20,
       "ldap": "vtthien5",
       "display_name": "Thu Hiền - ngài đại sứ",
-      "wish": "Anh em GVN chúc chị Hiền 20/10 thật vui bên gia đình ạ.\nChúc Đại sứ Văn hóa luôn khỏe, đầy năng lượng, lên kèo nào là anh em hưởng ứng nhiệt tình kèo đó nha chị!",
-      "avatar": "",
+      "wish": "Anh em GVN chúc chị Hiền 20/10 thật vui bên gia đình ạ.\r\nChúc Đại sứ Văn hóa luôn khỏe, đầy năng lượng, lên kèo nào là anh em hưởng ứng nhiệt tình kèo đó nha chị!",
+      "avatar": "/uploads/1792179978855_cropped.jpg",
       "spun": 0,
       "gift_id": null,
       "spun_at": null
@@ -204,8 +204,8 @@
       "id": 21,
       "ldap": "gmhanh",
       "display_name": "Mỹ Hạnh",
-      "wish": "Anh em GVN chúc chị Hạnh 20/10 thật vui, nhận quà mỏi tay ạ.\nChúc chị sớm thành cao thủ pickleball, ra sân đánh hay, đi giải có cúp mang về nha chị!",
-      "avatar": "",
+      "wish": "Anh em GVN chúc chị Hạnh 20/10 thật vui, nhận quà mỏi tay ạ.\r\nChúc chị sớm thành cao thủ pickleball, ra sân đánh hay, đi giải có cúp mang về nha chị!",
+      "avatar": "/uploads/1792179987222_cropped.jpg",
       "spun": 0,
       "gift_id": null,
       "spun_at": null
@@ -214,8 +214,8 @@
       "id": 22,
       "ldap": "ntdung36",
       "display_name": "Dung Nguyễn",
-      "wish": "Anh em GVN chúc chị Dung 20/10 thật vui, luôn khỏe và nhận được món quà mình thích ạ.\nChúc chị sớm đạt được những điều mình mong muốn nha ạ",
-      "avatar": "",
+      "wish": "Anh em GVN chúc chị Dung 20/10 thật vui, luôn khỏe và nhận được món quà mình thích ạ.\r\nChúc chị sớm đạt được những điều mình mong muốn nha ạ",
+      "avatar": "/uploads/1792180000757_cropped.jpg",
       "spun": 0,
       "gift_id": null,
       "spun_at": null
@@ -224,91 +224,113 @@
   "gifts": [
     {
       "id": 1,
-      "name": "QUÀ 01",
+      "name": "Kem tay thơm - hoa cam cỏ",
       "quantity": 3,
       "remaining": 3,
       "weight": 3,
       "color": "#fcd3de",
       "sort_order": 1,
       "active": 1,
-      "image": ""
+      "image": "./uploads/gifts/1.jpg"
     },
     {
       "id": 2,
-      "name": "QUÀ 02",
-      "quantity": 3,
-      "remaining": 3,
-      "weight": 3,
+      "name": "Kem tay thơm - bơ hạt mỡ",
+      "quantity": 2,
+      "remaining": 2,
+      "weight": 2,
       "color": "#fbe2d5",
       "sort_order": 2,
       "active": 1,
-      "image": ""
+      "image": "./uploads/gifts/2.jpg"
     },
     {
       "id": 3,
-      "name": "QUÀ 03",
-      "quantity": 3,
-      "remaining": 3,
-      "weight": 3,
+      "name": "Kem tay thơm - hoa anh đào",
+      "quantity": 2,
+      "remaining": 2,
+      "weight": 2,
       "color": "#e4d3ec",
       "sort_order": 3,
       "active": 1,
-      "image": ""
+      "image": "./uploads/gifts/3.jpg"
     },
     {
       "id": 4,
-      "name": "QUÀ 04",
-      "quantity": 3,
-      "remaining": 3,
-      "weight": 3,
+      "name": "Găng tay tẩy tế bào",
+      "quantity": 1,
+      "remaining": 1,
+      "weight": 0,
       "color": "#fcd3de",
       "sort_order": 4,
       "active": 1,
-      "image": ""
+      "image": "./uploads/gifts/4.jpg"
     },
     {
       "id": 5,
-      "name": "QUÀ 05",
-      "quantity": 3,
-      "remaining": 3,
-      "weight": 3,
+      "name": "Phấn má hồng",
+      "quantity": 1,
+      "remaining": 1,
+      "weight": 0,
       "color": "#fbe2d5",
       "sort_order": 5,
       "active": 1,
-      "image": ""
+      "image": "./uploads/gifts/5.jpg"
     },
     {
       "id": 6,
-      "name": "QUÀ 06",
+      "name": "Mặt nạ dừa tươi",
       "quantity": 3,
       "remaining": 3,
       "weight": 3,
       "color": "#fcd0df",
       "sort_order": 6,
       "active": 1,
-      "image": ""
+      "image": "./uploads/gifts/6.jpg"
     },
     {
       "id": 7,
-      "name": "QUÀ 07",
-      "quantity": 3,
-      "remaining": 2,
-      "weight": 3,
+      "name": "Sửa rửa mặt tạo bọt",
+      "quantity": 5,
+      "remaining": 5,
+      "weight": 5,
       "color": "#fce3d7",
       "sort_order": 7,
       "active": 1,
-      "image": ""
+      "image": "./uploads/gifts/7.jpg"
     },
     {
       "id": 8,
-      "name": "QUÀ 08",
-      "quantity": 3,
-      "remaining": 3,
-      "weight": 3,
+      "name": "Mặt nạ dừa tươi - da dầu",
+      "quantity": 5,
+      "remaining": 5,
+      "weight": 5,
       "color": "#e6d8ed",
       "sort_order": 8,
       "active": 1,
-      "image": ""
+      "image": "./uploads/gifts/8.jpg"
+    },
+    {
+      "id": 9,
+      "name": "Mặt nạ dừa tươi - dưỡng ẩm",
+      "quantity": 3,
+      "remaining": 3,
+      "weight": 3,
+      "color": "#fcd3de",
+      "sort_order": 9,
+      "active": 1,
+      "image": "./uploads/gifts/9.jpg"
+    },
+    {
+      "id": 10,
+      "name": "Mascara Browit",
+      "quantity": 1,
+      "remaining": 1,
+      "weight": 0,
+      "color": "#fce3d7",
+      "sort_order": 10,
+      "active": 1,
+      "image": "./uploads/gifts/10.jpg"
     }
   ]
 }

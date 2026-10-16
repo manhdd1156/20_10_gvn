@@ -87,137 +87,296 @@
     100% { transform: translateY(105vh) rotate(540deg) scale(1.1); opacity: 0; }
   }
 
-  /* ===== LOGIN SCREEN ===== */
-  #loginScreen {
+  /* ===== HEART LOADING SCREEN (3s Avatar Collage) ===== */
+  #heartLoadingScreen {
     position: fixed;
     inset: 0;
-    z-index: 50;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: radial-gradient(circle at 50% 40%, #fff8fa 0%, #fde6ee 60%, #fae0e8 100%);
+    padding: 20px;
+    transition: opacity 0.75s cubic-bezier(0.4, 0, 0.2, 1), transform 0.75s cubic-bezier(0.4, 0, 0.2, 1), filter 0.75s ease;
+  }
+
+  #heartLoadingScreen.fade-out {
+    opacity: 0;
+    transform: scale(1.08);
+    filter: blur(10px);
+    pointer-events: none;
+  }
+
+  .heart-loading-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    max-width: 680px;
+    width: 100%;
+  }
+
+  .heart-loading-brand {
+    font-size: 0.82rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    color: var(--primary-red);
+    background: rgba(201, 61, 93, 0.1);
+    border: 1px solid rgba(201, 61, 93, 0.25);
+    padding: 6px 20px;
+    border-radius: 30px;
+    margin-bottom: 10px;
+  }
+
+  .heart-loading-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.3rem;
+    font-weight: 700;
+    color: var(--primary-burgundy);
+    margin-bottom: 4px;
+    letter-spacing: -0.5px;
+  }
+
+  .heart-loading-recipient {
+    font-size: 1.18rem;
+    font-weight: 700;
+    color: var(--primary-red);
+    margin-bottom: 8px;
+    min-height: 28px;
+  }
+
+  /* Heart Collage Box */
+  .heart-collage-wrapper {
+    position: relative;
+    width: 460px;
+    height: 400px;
+    margin: 8px auto 16px;
+    animation: heartBeatPulse 2.8s ease-in-out infinite;
+  }
+
+  @keyframes heartBeatPulse {
+    0% { transform: scale(1); }
+    14% { transform: scale(1.035); }
+    28% { transform: scale(1); }
+    42% { transform: scale(1.045); }
+    70% { transform: scale(1); }
+  }
+
+  /* Individual avatar node in heart perimeter */
+  .heart-avatar-node {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 3px solid #ffffff;
+    background: #fde6ee;
+    box-shadow: 0 8px 22px rgba(108, 35, 56, 0.2);
+    overflow: hidden;
+    animation: avatarFloat 3s ease-in-out infinite alternate;
+  }
+
+  @keyframes avatarFloat {
+    0% { transform: translateY(0px) scale(1); }
+    50% { transform: translateY(-4px) scale(1.04); }
+    100% { transform: translateY(2px) scale(0.98); }
+  }
+
+  .heart-avatar-node img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .heart-avatar-node .node-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.35rem;
+    background: linear-gradient(135deg, #fbcfe8, #f472b6);
+  }
+
+  /* Center Glowing Core */
+  .heart-center-core {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -52%);
+    width: 108px;
+    height: 108px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+  }
+
+  .heart-core-ring {
+    position: absolute;
+    inset: -6px;
+    border-radius: 50%;
+    border: 2px dashed rgba(201, 61, 93, 0.5);
+    animation: rotateCoreRing 14s linear infinite;
+  }
+
+  @keyframes rotateCoreRing {
+    100% { transform: rotate(360deg); }
+  }
+
+  .heart-core-avatar {
+    width: 88px;
+    height: 88px;
+    border-radius: 50%;
+    border: 4px solid #ffffff;
+    box-shadow: 0 12px 32px rgba(201, 61, 93, 0.35);
+    overflow: hidden;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .heart-core-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .heart-core-badge {
+    position: absolute;
+    bottom: -6px;
+    background: linear-gradient(135deg, #d34265, #b82b4f);
+    color: white;
+    font-size: 0.72rem;
+    font-weight: 800;
+    padding: 3px 12px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(184, 43, 79, 0.35);
+    white-space: nowrap;
+  }
+
+  /* Progress Bar */
+  .loading-progress-box {
+    width: 340px;
+    max-width: 90%;
+    margin-top: 4px;
+  }
+
+  .loading-progress-track {
+    width: 100%;
+    height: 8px;
+    border-radius: 10px;
+    background: rgba(201, 61, 93, 0.15);
+    overflow: hidden;
+  }
+
+  .loading-progress-bar {
+    width: 0%;
+    height: 100%;
+    border-radius: 10px;
+    background: linear-gradient(90deg, #f7aabf, #c93d5d);
+    transition: width 0.05s linear;
+  }
+
+  .loading-status-text {
+    font-size: 0.88rem;
+    color: #8c5666;
+    margin-top: 8px;
+    font-style: italic;
+  }
+
+  /* User Picker Modal for root URL access */
+  .user-picker-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 1200;
+    background: rgba(84, 21, 41, 0.6);
+    backdrop-filter: blur(8px);
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 20px;
-    backdrop-filter: blur(4px);
   }
 
-  .login-card {
-    background: rgba(255, 255, 255, 0.92);
-    backdrop-filter: blur(25px);
+  .user-picker-card {
+    background: #ffffff;
     border-radius: 32px;
-    padding: 50px 42px;
-    width: 440px;
-    max-width: 100%;
-    text-align: center;
-    box-shadow: 0 25px 60px rgba(108, 35, 56, 0.12), 0 0 0 1px rgba(255, 255, 255, 0.8);
-    position: relative;
-    z-index: 10;
-  }
-
-  .brand-badge {
-    display: inline-block;
-    font-size: 0.75rem;
-    font-weight: 700;
-    letter-spacing: 2.5px;
-    text-transform: uppercase;
-    color: var(--primary-burgundy);
-    background: #fdecf2;
-    padding: 6px 18px;
-    border-radius: 20px;
-    margin-bottom: 18px;
-  }
-
-  .login-heading {
-    font-family: 'Playfair Display', serif;
-    font-size: 2.2rem;
-    font-weight: 700;
-    color: var(--primary-burgundy);
-    line-height: 1.25;
-    margin-bottom: 8px;
-  }
-
-  .heart-icon {
-    color: var(--primary-red);
-    font-size: 1.1rem;
-    margin: 8px 0 16px;
-  }
-
-  .login-instruction {
-    font-size: 0.92rem;
-    color: #8c5666;
-    margin-bottom: 28px;
-  }
-
-  .ldap-input-group {
-    margin-bottom: 18px;
-  }
-
-  .ldap-input-group input {
+    padding: 36px 32px;
+    max-width: 620px;
     width: 100%;
-    padding: 16px 20px;
-    background: #fff8fa;
-    border: 2px solid #f9ccd9;
-    border-radius: 16px;
-    font-size: 1.05rem;
-    font-family: inherit;
-    font-weight: 600;
-    color: var(--primary-burgundy);
     text-align: center;
-    outline: none;
-    transition: all 0.25s;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.25);
+    animation: modalPop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    max-height: 85vh;
+    overflow-y: auto;
   }
 
-  .ldap-input-group input:focus {
-    border-color: var(--primary-red);
-    background: #fff;
-    box-shadow: 0 0 0 4px rgba(201, 61, 93, 0.12);
+  .user-picker-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 12px;
+    margin-top: 16px;
   }
 
-  .ldap-input-group input::placeholder {
-    color: #bda1ab;
-    font-weight: 400;
-    font-size: 0.95rem;
-  }
-
-  .btn-login {
-    width: 100%;
-    padding: 16px;
-    background: linear-gradient(135deg, #d34b6b, #b32a4e);
-    color: white;
-    border: none;
+  .user-picker-item {
+    background: #fdf2f5;
+    border: 1px solid #f8bbd0;
     border-radius: 16px;
-    font-size: 1.05rem;
-    font-weight: 700;
-    font-family: inherit;
-    letter-spacing: 0.5px;
+    padding: 12px 10px;
     cursor: pointer;
-    box-shadow: 0 10px 25px rgba(179, 42, 78, 0.35);
-    transition: all 0.25s;
+    transition: all 0.2s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    text-decoration: none;
+    color: var(--primary-burgundy);
   }
 
-  .btn-login:hover {
+  .user-picker-item:hover {
+    background: #fce4ec;
     transform: translateY(-2px);
-    box-shadow: 0 14px 30px rgba(179, 42, 78, 0.42);
+    box-shadow: 0 6px 16px rgba(201, 61, 93, 0.18);
+    border-color: #c93d5d;
   }
 
-  .btn-login:active {
-    transform: translateY(0);
+  .user-picker-avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    object-fit: cover;
+    background: #fff;
+    display: block;
   }
 
-  .error-msg {
-    display: none;
-    background: #ffebee;
-    color: #c62828;
-    padding: 12px 16px;
-    border-radius: 12px;
-    font-size: 0.88rem;
-    font-weight: 600;
-    margin-bottom: 18px;
-    border: 1px solid #ffcdd2;
+  .user-picker-name {
+    font-weight: 700;
+    font-size: 0.85rem;
   }
 
-  .login-footer-hint {
-    font-size: 0.8rem;
-    color: #a47685;
-    margin-top: 18px;
+  @media (max-width: 520px) {
+    .heart-collage-wrapper {
+      width: 330px;
+      height: 290px;
+    }
+    .heart-avatar-node {
+      width: 36px;
+      height: 36px;
+    }
+    .heart-center-core {
+      width: 76px;
+      height: 76px;
+    }
+    .heart-core-avatar {
+      width: 64px;
+      height: 64px;
+    }
+    .heart-loading-title {
+      font-size: 1.8rem;
+    }
   }
 
   /* ===== MAIN APP SCREEN ===== */
@@ -304,17 +463,21 @@
 
   /* Avatar Outer Circle Frame */
   .avatar-frame {
-    width: 200px;
-    height: 200px;
+    width: 250px;
+    height: 250px;
     border-radius: 50%;
-    background: #fde6ee;
-    padding: 8px;
-    box-shadow: 0 10px 25px rgba(201, 61, 93, 0.15);
-    margin-bottom: 22px;
+    background: linear-gradient(135deg, #fde6ee 0%, #fcd3de 100%);
+    padding: 10px;
+    box-shadow: 0 16px 40px rgba(201, 61, 93, 0.2), 0 0 0 6px rgba(255, 255, 255, 0.9);
+    margin-bottom: 24px;
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+  .avatar-frame:hover {
+    transform: scale(1.02);
   }
 
   .avatar-img-circle {
@@ -322,8 +485,10 @@
     height: 100%;
     border-radius: 50%;
     object-fit: cover;
+    object-position: center;
     background: #fff;
     display: block;
+    box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.08);
   }
 
   .avatar-placeholder {
@@ -334,7 +499,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 4rem;
+    font-size: 5rem;
     color: #fff;
   }
 
@@ -420,8 +585,8 @@
 
   .wheel-outer-wrapper {
     position: relative;
-    width: 440px;
-    height: 440px;
+    width: 460px;
+    height: 460px;
     margin-bottom: 24px;
   }
 
@@ -677,22 +842,42 @@
 <div class="petals-layer" id="petalsBox"></div>
 <canvas id="celebrationCanvas"></canvas>
 
-<!-- ===== 1. LOGIN SCREEN ===== -->
-<div id="loginScreen">
-  <div class="login-card">
-    <div class="brand-badge">CMC GLOBAL GVN</div>
-    <h1 class="login-heading">Một ngày dành<br>riêng cho bạn</h1>
-    <div class="heart-icon">♡</div>
-    <p class="login-instruction">20/10 • Ngày Phụ Nữ Việt Nam</p>
+<!-- ===== 1. HEART LOADING SCREEN (3s Intro with Avatar Collage) ===== -->
+<div id="heartLoadingScreen">
+  <div class="heart-loading-content">
+    <div class="heart-loading-brand">CMC GLOBAL GVN • 20/10</div>
+    <h2 class="heart-loading-title">Một ngày dành riêng cho bạn</h2>
+    <div class="heart-loading-recipient" id="loadingRecipientName">Đang chuẩn bị quà tặng... ♡</div>
 
-    <div class="error-msg" id="loginErrorMsg"></div>
-
-    <div class="ldap-input-group">
-      <input type="text" id="ldapField" placeholder="Nhập LDAP của bạn (VD: nttan3)" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+    <!-- Heart Collage Box -->
+    <div class="heart-collage-wrapper" id="heartCollageBox">
+      <!-- Center Core: Recipient Avatar & Badge -->
+      <div class="heart-center-core" id="heartCenterCore">
+        <div class="heart-core-ring"></div>
+        <div class="heart-core-avatar" id="heartCoreAvatarWrap">
+          <span style="font-size:2.2rem">🌸</span>
+        </div>
+        <div class="heart-core-badge">20/10 GVN</div>
+      </div>
     </div>
 
-    <button class="btn-login" id="btnLogin" onclick="handleLogin()">VÀO NHẬN QUÀ 🎁</button>
-    <div class="login-footer-hint">Chỉ cần nhập LDAP cá nhân, không cần đuôi @cmcglobal.vn</div>
+    <!-- 3-Second Loading Progress -->
+    <div class="loading-progress-box">
+      <div class="loading-progress-track">
+        <div class="loading-progress-bar" id="loadingProgressBar"></div>
+      </div>
+      <div class="loading-status-text" id="loadingStatusText">Đang chuẩn bị không gian quay thưởng dành riêng cho bạn... 🌸</div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal chọn người nhận quà nếu truy cập link gốc (không có LDAP trên URL) -->
+<div class="user-picker-overlay" id="userPickerModal" style="display:none">
+  <div class="user-picker-card">
+    <div class="heart-loading-brand" style="margin-bottom:14px;">CMC GLOBAL GVN • 20/10</div>
+    <h3 style="font-family:'Playfair Display',serif;font-size:1.7rem;color:var(--primary-burgundy);margin-bottom:6px;">Chào mừng các đóa hoa GVN! 🌸</h3>
+    <p style="font-size:0.92rem;color:#8c5666;margin-bottom:20px;">Vui lòng chọn tên của bạn để mở vòng quay may mắn dành riêng cho mình:</p>
+    <div class="user-picker-grid" id="userPickerGrid"></div>
   </div>
 </div>
 
@@ -801,50 +986,232 @@ let spinning = false;
 let wheelAngle = 0; // Current wheel rotation angle in degrees
 let canvasDim = 0;
 
-// Listen for enter key on login input
-document.getElementById('ldapField').addEventListener('keydown', (e) => {
-  if (e.key === 'Enter') handleLogin();
-});
+// ===== HEART AVATAR COLLAGE & 3s INTRO LOGIC =====
+function buildHeartCollage(users, activeUser) {
+  const container = document.getElementById('heartCollageBox');
+  // Clear any existing avatar nodes (keep center core)
+  container.querySelectorAll('.heart-avatar-node').forEach(n => n.remove());
 
-async function handleLogin() {
-  const input = document.getElementById('ldapField');
-  const ldap = input.value.trim().toLowerCase();
-  const errorBox = document.getElementById('loginErrorMsg');
+  const total = users.length > 0 ? users.length : 22;
+  const isMobile = window.innerWidth <= 520;
+  const w = isMobile ? 330 : 460;
+  const h = isMobile ? 290 : 400;
+  const cx = w / 2;
+  const cy = h / 2 - (isMobile ? 10 : 16);
+  const scaleX = isMobile ? 8.8 : 12.8;
+  const scaleY = isMobile ? 7.6 : 10.4;
+  const nodeSize = isMobile ? 36 : 50;
 
-  if (!ldap) {
-    errorBox.textContent = 'Vui lòng nhập LDAP của bạn.';
-    errorBox.style.display = 'block';
+  for (let i = 0; i < total; i++) {
+    const user = users[i % users.length];
+    const t = (Math.PI * 2 * i) / total;
+    // Standard parametric heart curve: x = 16*sin^3(t), y = -(13*cos(t)-5*cos(2t)-2*cos(3t)-cos(4t))
+    const x = 16 * Math.pow(Math.sin(t), 3);
+    const y = -(13 * Math.cos(t) - 5 * Math.cos(2 * t) - 2 * Math.cos(3 * t) - Math.cos(4 * t));
+
+    const left = cx + x * scaleX - nodeSize / 2;
+    const top = cy + y * scaleY - nodeSize / 2;
+
+    const node = document.createElement('div');
+    node.className = 'heart-avatar-node';
+    node.style.left = left + 'px';
+    node.style.top = top + 'px';
+    node.style.animationDelay = (-(i * 0.22) % 3) + 's';
+    node.title = user ? user.display_name : '';
+
+    if (user && user.avatar) {
+      node.innerHTML = `<img src="${user.avatar}" alt="${user.display_name || ''}" onerror="this.parentElement.innerHTML='<div class=\\'node-placeholder\\'>🌸</div>'">`;
+    } else {
+      node.innerHTML = `<div class="node-placeholder">🌸</div>`;
+    }
+    container.appendChild(node);
+  }
+
+  // Update center core avatar
+  const coreWrap = document.getElementById('heartCoreAvatarWrap');
+  if (activeUser && activeUser.avatar) {
+    coreWrap.innerHTML = `<img src="${activeUser.avatar}" alt="${activeUser.display_name}" onerror="this.parentElement.innerHTML='<span style=\\'font-size:2.2rem\\'>🌸</span>'">`;
+  } else {
+    coreWrap.innerHTML = `<span style="font-size:2.2rem">🌸</span>`;
+  }
+}
+
+function animateHeartProgress(durationMs, onFinish) {
+  const progressBar = document.getElementById('loadingProgressBar');
+  const startTime = performance.now();
+
+  function step(now) {
+    const elapsed = now - startTime;
+    const progress = Math.min(1, elapsed / durationMs);
+    progressBar.style.width = (progress * 100) + '%';
+
+    if (progress < 1) {
+      requestAnimationFrame(step);
+    } else {
+      progressBar.style.width = '100%';
+      setTimeout(onFinish, 200);
+    }
+  }
+  requestAnimationFrame(step);
+}
+
+function showUserPicker(users) {
+  const modal = document.getElementById('userPickerModal');
+  const grid = document.getElementById('userPickerGrid');
+  grid.innerHTML = '';
+
+  users.forEach(u => {
+    const item = document.createElement('a');
+    item.className = 'user-picker-item';
+    item.href = '/' + u.ldap;
+    item.onclick = (e) => {
+      e.preventDefault();
+      modal.style.display = 'none';
+      history.pushState(null, '', '/' + u.ldap);
+      initAppWithLdap(u.ldap, users);
+    };
+
+    const avatarHtml = u.avatar
+      ? `<img src="${u.avatar}" class="user-picker-avatar" alt="${u.display_name}" onerror="this.outerHTML='<div class=\\'user-picker-avatar\\' style=\\'display:flex;align-items:center;justify-content:center;background:#fce4ec;font-size:1.2rem;\\'>🌸</div>'">`
+      : `<div class="user-picker-avatar" style="display:flex;align-items:center;justify-content:center;background:#fce4ec;font-size:1.2rem;">🌸</div>`;
+
+    item.innerHTML = `
+      ${avatarHtml}
+      <div class="user-picker-name">${u.display_name}</div>
+    `;
+    grid.appendChild(item);
+  });
+
+  modal.style.display = 'flex';
+}
+
+async function initAppWithLdap(targetLdap, allUsers) {
+  userLdap = targetLdap;
+  const activeUser = allUsers.find(u => u.ldap.toLowerCase() === targetLdap.toLowerCase());
+
+  if (activeUser) {
+    document.getElementById('loadingRecipientName').textContent = 'Chào mừng ' + activeUser.display_name + ' ♡';
+  } else {
+    document.getElementById('loadingRecipientName').textContent = 'Chào mừng bạn đến với 20/10 GVN ♡';
+  }
+
+  buildHeartCollage(allUsers, activeUser);
+
+  // Load dashboard data in background
+  const dashboardPromise = loadAppDashboard(targetLdap);
+
+  // Run 3-second animated countdown
+  animateHeartProgress(3000, async () => {
+    try {
+      await dashboardPromise;
+    } catch (e) {
+      console.error(e);
+    }
+    const heartScreen = document.getElementById('heartLoadingScreen');
+    heartScreen.classList.add('fade-out');
+    setTimeout(() => {
+      heartScreen.style.display = 'none';
+      document.getElementById('mainApp').style.display = 'block';
+      initCanvas();
+    }, 700);
+  });
+}
+
+async function startApp() {
+  const pathLdap = window.location.pathname.replace(/^\/+|\/+$/g, '').split('/')[0];
+  const queryLdap = new URLSearchParams(window.location.search).get('ldap') || new URLSearchParams(window.location.search).get('u');
+  let targetLdap = '';
+
+  if (pathLdap && !['admin', 'api', 'uploads'].includes(pathLdap.toLowerCase())) {
+    targetLdap = pathLdap.toLowerCase();
+  } else if (queryLdap) {
+    targetLdap = queryLdap.toLowerCase().trim();
+  }
+
+  // Fetch all users summary for the heart collage
+  let allUsers = [];
+  try {
+    const res = await fetch('/api/users-summary');
+    allUsers = await res.json();
+  } catch (err) {
+    console.error('Lỗi tải users summary:', err);
+  }
+
+  if (targetLdap) {
+    initAppWithLdap(targetLdap, allUsers);
+  } else {
+    // If no LDAP in URL (visited / directly), build background heart and show picker
+    buildHeartCollage(allUsers, null);
+    showUserPicker(allUsers);
+  }
+}
+
+// Start immediately on DOM ready
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', startApp);
+} else {
+  startApp();
+}
+
+// Image cache & preloader
+const giftImageCache = {};
+function preloadGiftImages(gifts, onDone) {
+  let loaded = 0;
+  const list = gifts.filter(g => g.image);
+  if (list.length === 0) {
+    if (onDone) onDone();
     return;
   }
-
-  errorBox.style.display = 'none';
-  const loginBtn = document.getElementById('btnLogin');
-  loginBtn.disabled = true;
-  loginBtn.textContent = 'Đang kiểm tra...';
-
-  try {
-    const res = await fetch('/api/login', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ ldap })
-    });
-    const data = await res.json();
-
-    if (data.success) {
-      userLdap = data.ldap;
-      await loadAppDashboard(data.ldap);
-    } else {
-      errorBox.textContent = data.message || 'LDAP không tồn tại trong danh sách 22 người được mời!';
-      errorBox.style.display = 'block';
-      loginBtn.disabled = false;
-      loginBtn.textContent = 'VÀO NHẬN QUÀ 🎁';
+  list.forEach(g => {
+    if (giftImageCache[g.id] && giftImageCache[g.id].complete) {
+      loaded++;
+      if (loaded === list.length && onDone) onDone();
+      return;
     }
-  } catch (err) {
-    errorBox.textContent = 'Có lỗi kết nối máy chủ, vui lòng thử lại sau.';
-    errorBox.style.display = 'block';
-    loginBtn.disabled = false;
-    loginBtn.textContent = 'VÀO NHẬN QUÀ 🎁';
+    const img = new Image();
+    img.onload = () => {
+      giftImageCache[g.id] = img;
+      loaded++;
+      if (onDone) onDone();
+    };
+    img.onerror = () => {
+      loaded++;
+      if (onDone) onDone();
+    };
+    img.src = g.image;
+  });
+}
+
+// Smart label breaker for long gift names
+function formatGiftLabel(name) {
+  if (!name) return ['', ''];
+  const trimmed = name.trim();
+  // 1. Nếu có dấu " - ", ưu tiên tách theo dấu nối
+  if (trimmed.includes(' - ')) {
+    const parts = trimmed.split(' - ');
+    return [parts[0].trim(), parts.slice(1).join(' - ').trim()];
   }
+  // 2. Tinh chỉnh các trường hợp đặc biệt để hiển thị đẹp nhất
+  if (trimmed === 'Găng tay tẩy tế bào') {
+    return ['Găng tay', 'tẩy tế bào'];
+  }
+  if (trimmed === 'Sửa rửa mặt tạo bọt') {
+    return ['Sữa rửa mặt', 'tạo bọt'];
+  }
+  if (trimmed === 'Mặt nạ dừa tươi') {
+    return ['Mặt nạ', 'dừa tươi'];
+  }
+  if (trimmed === 'Mascara Browit') {
+    return ['Mascara', 'Browit'];
+  }
+  if (trimmed === 'Phấn má hồng') {
+    return ['Phấn má', 'hồng'];
+  }
+  // 3. Dự phòng cho các tên quà khác
+  const words = trimmed.split(/\s+/);
+  if (words.length <= 2) return [trimmed, ''];
+  const mid = Math.ceil(words.length / 2);
+  return [words.slice(0, mid).join(' '), words.slice(mid).join(' ')];
 }
 
 async function loadAppDashboard(ldap) {
@@ -863,13 +1230,18 @@ async function loadAppDashboard(ldap) {
 
     const avatarWrap = document.getElementById('avatarWrap');
     if (profileData.avatar) {
-      avatarWrap.innerHTML = `<img src="${profileData.avatar}" class="avatar-img-circle" alt="${profileData.display_name}">`;
+      avatarWrap.innerHTML = `<img src="${profileData.avatar}" class="avatar-img-circle" alt="${profileData.display_name}" onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\\'avatar-placeholder\\'>🌸</div>';">`;
     } else {
       avatarWrap.innerHTML = `<div class="avatar-placeholder">🌸</div>`;
     }
 
     // Initialize wheel canvas
     initCanvas();
+
+    // Preload images then re-render wheel once loaded
+    preloadGiftImages(wheelGifts, () => {
+      renderWheel(wheelAngle);
+    });
 
     // Check if user has already spun
     if (profileData.spun) {
@@ -887,10 +1259,6 @@ async function loadAppDashboard(ldap) {
         if (wonIdx !== -1) {
           const n = wheelGifts.length;
           const segDeg = 360 / n;
-          // Segment i spans [wheelAngle + i*segDeg, wheelAngle + (i+1)*segDeg]
-          // Mid angle: wheelAngle + i*segDeg + segDeg/2
-          // Top pin is 270 deg (in standard canvas coordinates where 0 is 3 o'clock)
-          // Therefore: wheelAngle + i*segDeg + segDeg/2 = 270 => wheelAngle = 270 - (i*segDeg + segDeg/2)
           wheelAngle = (270 - (wonIdx * segDeg + segDeg / 2) + 720) % 360;
           renderWheel(wheelAngle);
         }
@@ -899,9 +1267,7 @@ async function loadAppDashboard(ldap) {
       }
     }
 
-    // Switch view
-    document.getElementById('loginScreen').style.display = 'none';
-    document.getElementById('mainApp').style.display = 'block';
+
 
   } catch (err) {
     console.error('Error loading app:', err);
@@ -914,7 +1280,7 @@ function initCanvas() {
   const canvas = document.getElementById('spinCanvas');
   const dpr = window.devicePixelRatio || 1;
   const rect = canvas.getBoundingClientRect();
-  canvasDim = rect.width || 440;
+  canvasDim = rect.width || 460;
 
   canvas.width = canvasDim * dpr;
   canvas.height = canvasDim * dpr;
@@ -925,7 +1291,7 @@ function initCanvas() {
   renderWheel(wheelAngle);
 }
 
-// Draw gift box icon on wheel segments
+// Draw fallback gift box icon on wheel segments
 function drawWheelGiftIcon(ctx, x, y, size) {
   ctx.save();
   ctx.translate(x, y);
@@ -997,26 +1363,74 @@ function renderWheel(angleInDegrees) {
     ctx.lineWidth = 2.5;
     ctx.stroke();
 
-    // Segment Content (Gift icon + Label)
+    // Segment Content (Circular Gift Image + 2-line Label)
     const midAngle = segStart + segAngleRad / 2;
-    const contentRadius = r * 0.65;
+    const contentRadius = r * 0.62;
     const ix = cx + contentRadius * Math.cos(midAngle);
     const iy = cy + contentRadius * Math.sin(midAngle);
 
     ctx.save();
     ctx.translate(ix, iy);
-    // Rotate text & icon perpendicular to the radius
+    // Rotate so top is towards outer rim and bottom is towards hub
     ctx.rotate(midAngle + Math.PI / 2);
 
-    // Gift icon
-    drawWheelGiftIcon(ctx, 0, -14, 22);
+    // 1. Draw circular gift image badge
+    const imgRadius = Math.max(19, size * 0.047); // ~21.6px
+    const imgY = -size * 0.082; // ~ -37px (towards outer rim where wedge is wider)
 
-    // Gift Name text
-    ctx.font = `700 ${Math.max(10, size * 0.028)}px 'Plus Jakarta Sans', sans-serif`;
-    ctx.fillStyle = '#6c2338';
+    // Base circular shadow
+    ctx.save();
+    ctx.beginPath();
+    ctx.arc(0, imgY, imgRadius + 2, 0, Math.PI * 2);
+    ctx.fillStyle = '#ffffff';
+    ctx.shadowColor = 'rgba(108, 35, 56, 0.2)';
+    ctx.shadowBlur = 6;
+    ctx.shadowOffsetY = 2;
+    ctx.fill();
+    ctx.restore();
+
+    // Draw clipped circular photo if available
+    const cachedImg = giftImageCache[gift.id];
+    if (cachedImg && cachedImg.complete && cachedImg.naturalWidth > 0) {
+      ctx.save();
+      ctx.beginPath();
+      ctx.arc(0, imgY, imgRadius, 0, Math.PI * 2);
+      ctx.clip();
+      ctx.drawImage(cachedImg, -imgRadius, imgY - imgRadius, imgRadius * 2, imgRadius * 2);
+      ctx.restore();
+    } else {
+      drawWheelGiftIcon(ctx, 0, imgY, imgRadius * 1.1);
+    }
+
+    // White rim around image badge
+    ctx.beginPath();
+    ctx.arc(0, imgY, imgRadius, 0, Math.PI * 2);
+    ctx.strokeStyle = '#ffffff';
+    ctx.lineWidth = 2.5;
+    ctx.stroke();
+
+    // 2. Draw gift name text (2 lines with smart wrapping)
+    const [line1, line2] = formatGiftLabel(gift.name);
+    const maxTextWidth = size * 0.16; // ~73px protection
+    const fontSize = Math.max(9.5, size * 0.023); // ~10.5px
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
-    ctx.fillText(gift.name.toUpperCase(), 0, 14);
+
+    if (line2) {
+      // Line 1: Primary bold
+      ctx.font = `700 ${fontSize}px 'Plus Jakarta Sans', sans-serif`;
+      ctx.fillStyle = '#6c2338';
+      ctx.fillText(line1, 0, size * 0.022, maxTextWidth);
+
+      // Line 2: Subtitle semi-bold
+      ctx.font = `600 ${fontSize * 0.92}px 'Plus Jakarta Sans', sans-serif`;
+      ctx.fillStyle = '#8f334d';
+      ctx.fillText(line2, 0, size * 0.052, maxTextWidth);
+    } else {
+      ctx.font = `700 ${fontSize}px 'Plus Jakarta Sans', sans-serif`;
+      ctx.fillStyle = '#6c2338';
+      ctx.fillText(line1, 0, size * 0.035, maxTextWidth);
+    }
 
     ctx.restore();
   }

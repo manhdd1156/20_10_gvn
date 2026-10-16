@@ -228,6 +228,7 @@ function generateAdminHTML(users, gifts, totalSpun, totalNotSpun) {
       <td>${u.spun_at ? new Date(u.spun_at).toLocaleString('vi-VN') : '-'}</td>
       <td>
         <div class="action-btns">
+          <button class="btn-copy-link" onclick="copyUserLink('${u.ldap}','${escapeJs(u.display_name)}')">🔗 Copy Link</button>
           <button class="btn-edit" onclick="editUser('${u.ldap}','${escapeJs(u.display_name)}','${escapeJs(u.wish || '')}','${u.avatar || ''}')">✏️ Sửa / Chỉnh Avatar</button>
           ${u.spun ? `<form method="POST" action="/admin/user/${u.ldap}/reset" onsubmit="return confirm('Reset lượt quay của ${u.display_name}?')" style="display:inline"><button class="btn-reset">🔄 Reset</button></form>` : ''}
         </div>
@@ -306,13 +307,18 @@ function generateAdminHTML(users, gifts, totalSpun, totalNotSpun) {
   .badge-pending { background: #fff3e0; color: #e65100; }
   .gift-tag { background: #fce4ec; color: #c93d5d; padding: 4px 12px; border-radius: 20px; font-size: 0.85rem; font-weight: 700; }
   
-  .action-btns { display: flex; gap: 8px; }
+  .action-btns { display: flex; gap: 8px; flex-wrap: wrap; }
+  .btn-copy-link { background: #e8f5e9; color: #2e7d32; border: 1px solid #c8e6c9; padding: 8px 14px; border-radius: 10px; cursor: pointer; font-size: 0.85rem; font-weight: 700; transition: all 0.2s; font-family: inherit; }
+  .btn-copy-link:hover { background: #2e7d32; color: white; }
   .btn-edit { background: #fce4ec; color: #c93d5d; border: 1px solid #f8bbd0; padding: 8px 14px; border-radius: 10px; cursor: pointer; font-size: 0.85rem; font-weight: 700; transition: all 0.2s; font-family: inherit; }
   .btn-edit:hover { background: #c93d5d; color: white; }
   .btn-reset { background: #fff3e0; color: #e65100; border: none; padding: 8px 14px; border-radius: 10px; cursor: pointer; font-size: 0.85rem; font-weight: 700; transition: background 0.2s; font-family: inherit; }
   .btn-reset:hover { background: #ffe0b2; }
   .btn-delete { background: #ffebee; color: #c62828; border: none; padding: 8px 14px; border-radius: 10px; cursor: pointer; font-size: 0.85rem; font-weight: 700; transition: background 0.2s; font-family: inherit; }
   .btn-delete:hover { background: #ffcdd2; }
+  
+  #adminToast { position: fixed; bottom: 30px; right: 30px; background: #2e7d32; color: white; padding: 14px 24px; border-radius: 12px; font-weight: 700; font-size: 0.95rem; box-shadow: 0 8px 24px rgba(0,0,0,0.25); z-index: 9999; display: none; animation: slideUpToast 0.3s ease; }
+  @keyframes slideUpToast { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
   
   /* Gifts */
   .gifts-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; }
@@ -661,11 +667,14 @@ function editUser(ldap, name, wish, avatar) {
   document.getElementById('avatarFileInput').value = '';
 
   if (avatar) {
-    cropperImg.src = avatar;
-    cropperImg.style.display = 'block';
     cropperImg.onload = function() {
       setupCropperInitial(this);
     };
+    cropperImg.src = avatar;
+    cropperImg.style.display = 'block';
+    if (cropperImg.complete && cropperImg.naturalWidth > 0) {
+      setupCropperInitial(cropperImg);
+    }
   } else {
     cropperImg.src = '';
     cropperImg.style.display = 'none';
@@ -850,11 +859,29 @@ document.querySelectorAll('.modal-overlay').forEach(m => {
   m.addEventListener('click', e => { if (e.target === m) m.classList.remove('open'); });
 });
 
-// Handle hash navigation
-const hash = window.location.hash;
-if (hash === '#users') { showTab('users'); }
-else if (hash === '#gifts') { showTab('gifts'); }
+// Copy personal user link helper
+function copyUserLink(ldap, name) {
+  const link = window.location.origin + '/' + ldap;
+  navigator.clipboard.writeText(link).then(() => {
+    showAdminToast('✓ Đã copy link của ' + name + ':\n' + link);
+  }).catch(() => {
+    prompt('Link cá nhân của ' + name + ':', link);
+  });
+}
+
+function showAdminToast(msg) {
+  let toast = document.getElementById('adminToast');
+  if (!toast) {
+    toast = document.createElement('div');
+    toast.id = 'adminToast';
+    document.body.appendChild(toast);
+  }
+  toast.innerText = msg;
+  toast.style.display = 'block';
+  setTimeout(() => { toast.style.display = 'none'; }, 3500);
+}
 </script>
+<div id="adminToast"></div>
 </body>
 </html>`;
 }
