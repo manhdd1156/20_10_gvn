@@ -444,7 +444,7 @@ function generateAdminHTML(users, gifts, totalSpun, totalNotSpun) {
 </div>
 
 <div class="nav-tabs">
-  <div class="nav-tab active" onclick="showTab('dashboard')">📊 Tổng quan</div>
+  <div class="nav-tab active" onclick="showTab('dashboard')" id="tab-dashboard">📊 Tổng quan</div>
   <div class="nav-tab" onclick="showTab('users')" id="tab-users">👩 Danh sách (${users.length})</div>
   <div class="nav-tab" onclick="showTab('gifts')" id="tab-gifts">🎁 Config quà (${gifts.length})</div>
 </div>
@@ -635,10 +635,25 @@ function generateAdminHTML(users, gifts, totalSpun, totalNotSpun) {
 function showTab(tab) {
   document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
   document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
-  document.getElementById('panel-' + tab).classList.add('active');
-  const clickedTab = document.getElementById('tab-' + tab) || event?.currentTarget;
+  const panel = document.getElementById('panel-' + tab);
+  if (panel) panel.classList.add('active');
+  const clickedTab = document.getElementById('tab-' + tab);
   if (clickedTab) clickedTab.classList.add('active');
 }
+
+// Tự động chọn tab theo hash URL (ví dụ: #gifts hoặc #users khi lưu xong)
+if (window.location.hash) {
+  const hash = window.location.hash.substring(1);
+  if (['dashboard', 'users', 'gifts'].includes(hash)) {
+    showTab(hash);
+  }
+}
+window.addEventListener('hashchange', () => {
+  const hash = window.location.hash.substring(1);
+  if (['dashboard', 'users', 'gifts'].includes(hash)) {
+    showTab(hash);
+  }
+});
 
 // ===== Interactive Cropper State & Logic =====
 const cropperViewport = document.getElementById('cropperViewport');
@@ -863,7 +878,7 @@ document.querySelectorAll('.modal-overlay').forEach(m => {
 function copyUserLink(ldap, name) {
   const link = window.location.origin + '/' + ldap;
   navigator.clipboard.writeText(link).then(() => {
-    showAdminToast('✓ Đã copy link của ' + name + ':\n' + link);
+    showAdminToast('✓ Đã copy link của ' + name + ':\\n' + link);
   }).catch(() => {
     prompt('Link cá nhân của ' + name + ':', link);
   });
