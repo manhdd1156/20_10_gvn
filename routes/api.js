@@ -56,7 +56,8 @@ router.get('/users-summary', (req, res) => {
 const DESIGNATED_GIFTS = {
   'ntdung36': 4,  // Găng tay tẩy tế bào
   'tkhuyen': 5,   // Phấn má hồng
-  'dklinh': 10    // Mascara Browit
+  'dklinh': 10,   // Mascara Browit (cố định 1 cho dklinh, dư 1 cho pool)
+  'dthvan': 9     // Mặt nạ dừa tươi - dưỡng ẩm (cố định 1 cho dthvan, 2 cho pool)
 };
 
 // Spin the wheel
@@ -85,27 +86,44 @@ router.post('/spin', (req, res, next) => {
       }
     }
 
-    // 2. Nếu không thuộc danh sách chỉ định: chọn ngẫu nhiên theo số lượng còn lại
+    // 2. Nếu không thuộc danh sách chỉ định: chọn ngẫu nhiên theo số lượng còn lại trong pool
     if (!selectedGift) {
-      // Loại bỏ các món quà đã được chỉ định (id 4, 5, 10) để bảo vệ quà riêng
-      const designatedGiftIds = Object.values(DESIGNATED_GIFTS);
-      const poolGifts = db.getActiveGifts().filter(g => 
-        !designatedGiftIds.includes(Number(g.id)) && (g.remaining || 0) > 0
-      );
+      // Tính số lượng quà đang được giữ chỗ riêng cho các nhân sự chỉ định CHƯA QUAY
+      const allUsers = db.getUsers();
+      const reservedGiftCounts = {};
+      for (const [designatedLdap, giftId] of Object.entries(DESIGNATED_GIFTS)) {
+        const u = allUsers.find(usr => usr.ldap.toLowerCase().trim() === designatedLdap.toLowerCase().trim());
+        if (u && !u.spun) {
+          reservedGiftCounts[Number(giftId)] = (reservedGiftCounts[Number(giftId)] || 0) + 1;
+        }
+      }
 
-      if (poolGifts.length === 0) {
+      // Lọc các món quà có sẵn cho pool quay chung (trừ đi phần quà đang được giữ chỗ riêng)
+      const poolItems = [];
+      for (const gift of db.getActiveGifts()) {
+        const reserved = reservedGiftCounts[Number(gift.id)] || 0;
+        const availableInPool = Math.max(0, (Number(gift.remaining) || 0) - reserved);
+        if (availableInPool > 0) {
+          poolItems.push({
+            gift,
+            weight: availableInPool
+          });
+        }
+      }
+
+      if (poolItems.length === 0) {
         return res.json({ success: false, message: 'Hiện tại đã hết quà trong kho!' });
       }
 
-      // Chia đều tỉ lệ theo số lượng quà còn lại (remaining)
-      const totalRemaining = poolGifts.reduce((sum, g) => sum + (Number(g.remaining) || 0), 0);
-      let rand = Math.random() * totalRemaining;
-      selectedGift = poolGifts[poolGifts.length - 1];
+      // Chia đều tỉ lệ theo số lượng quà khả dụng còn lại trong pool
+      const totalWeight = poolItems.reduce((sum, item) => sum + item.weight, 0);
+      let rand = Math.random() * totalWeight;
+      selectedGift = poolItems[poolItems.length - 1].gift;
 
-      for (const gift of poolGifts) {
-        rand -= (Number(gift.remaining) || 0);
+      for (const item of poolItems) {
+        rand -= item.weight;
         if (rand <= 0) {
-          selectedGift = gift;
+          selectedGift = item.gift;
           break;
         }
       }

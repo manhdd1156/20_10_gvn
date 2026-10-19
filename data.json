@@ -25,7 +25,7 @@
       "ldap": "nttan3",
       "display_name": "Thu An",
       "wish": "Anh em GVN chúc chị An 20/10 nhận được quà mình thích, có một ngày thật vui ạ.\nChúc chị luôn khỏe, có nhiều thời gian cho bản thân và làm được những điều mình muốn ạ",
-      "avatar": "./uploads/avatars/nttan3.png",
+      "avatar": "./uploads/avatars/nttan3.jpg",
       "spun": 0,
       "gift_id": null,
       "spun_at": null
@@ -215,7 +215,17 @@
       "ldap": "ntdung36",
       "display_name": "Dung Nguyễn",
       "wish": "Anh em GVN chúc chị Dung 20/10 thật vui, luôn khỏe và nhận được món quà mình thích ạ.\r\nChúc chị sớm đạt được những điều mình mong muốn nha ạ",
-      "avatar": "/uploads/1792180000757_cropped.jpg",
+      "avatar": "/uploads/avatars/ntdung36.jpg",
+      "spun": 0,
+      "gift_id": null,
+      "spun_at": null
+    },
+    {
+      "id": 23,
+      "ldap": "nhlinh7",
+      "display_name": "Hà Linh",
+      "wish": "Anh em GVN chúc Hà Linh 20/10 thật vui tươi, xinh đẹp, luôn may mắn và nhận được món quà mình yêu thích nhé!",
+      "avatar": "./uploads/avatars/nhlinh7.jpg",
       "spun": 0,
       "gift_id": null,
       "spun_at": null
@@ -324,9 +334,9 @@
     {
       "id": 10,
       "name": "Mascara Browit",
-      "quantity": 1,
-      "remaining": 1,
-      "weight": 0,
+      "quantity": 2,
+      "remaining": 2,
+      "weight": 1,
       "color": "#fce3d7",
       "sort_order": 10,
       "active": 1,

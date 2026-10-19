@@ -26,17 +26,20 @@ const defaultData = {
     { id: 19, ldap: 'dthvan', display_name: 'Hanna', wish: 'Anh em GVN chúc chị Hanna 20/10 thật vui bên gia đình ạ.\nChúc chị luôn khỏe mạnh, giữ đều lịch ra sân đánh pick cùng mọi người nha ạ!', avatar: '', spun: 0, gift_id: null, spun_at: null },
     { id: 20, ldap: 'vtthien5', display_name: 'Thu Hiền - ngài đại sứ', wish: 'Anh em GVN chúc chị Hiền 20/10 thật vui bên gia đình ạ.\nChúc Đại sứ Văn hóa luôn khỏe, đầy năng lượng, lên kèo nào là anh em hưởng ứng nhiệt tình kèo đó nha chị!', avatar: '', spun: 0, gift_id: null, spun_at: null },
     { id: 21, ldap: 'gmhanh', display_name: 'Mỹ Hạnh', wish: 'Anh em GVN chúc chị Hạnh 20/10 thật vui, nhận quà mỏi tay ạ.\nChúc chị sớm thành cao thủ pickleball, ra sân đánh hay, đi giải có cúp mang về nha chị!', avatar: '', spun: 0, gift_id: null, spun_at: null },
-    { id: 22, ldap: 'ntdung36', display_name: 'Dung Nguyễn', wish: 'Anh em GVN chúc chị Dung 20/10 thật vui, luôn khỏe và nhận được món quà mình thích ạ.\nChúc chị sớm đạt được những điều mình mong muốn nha ạ', avatar: '', spun: 0, gift_id: null, spun_at: null }
+    { id: 22, ldap: 'ntdung36', display_name: 'Dung Nguyễn', wish: 'Anh em GVN chúc chị Dung 20/10 thật vui, luôn khỏe và nhận được món quà mình thích ạ.\nChúc chị sớm đạt được những điều mình mong muốn nha ạ', avatar: '/uploads/avatars/ntdung36.jpg', spun: 0, gift_id: null, spun_at: null },
+    { id: 23, ldap: 'nhlinh7', display_name: 'Hà Linh', wish: 'Anh em GVN chúc Hà Linh 20/10 thật vui tươi, xinh đẹp, luôn may mắn và nhận được món quà mình yêu thích nhé!', avatar: './uploads/avatars/nhlinh7.jpg', spun: 0, gift_id: null, spun_at: null }
   ],
   gifts: [
-    { id: 1, name: 'QUÀ 01', quantity: 3, remaining: 3, weight: 3, color: '#fcd3de', sort_order: 1, active: 1, image: '' },
-    { id: 2, name: 'QUÀ 02', quantity: 3, remaining: 3, weight: 3, color: '#fbe2d5', sort_order: 2, active: 1, image: '' },
-    { id: 3, name: 'QUÀ 03', quantity: 3, remaining: 3, weight: 3, color: '#e4d3ec', sort_order: 3, active: 1, image: '' },
-    { id: 4, name: 'QUÀ 04', quantity: 3, remaining: 3, weight: 3, color: '#fcd3de', sort_order: 4, active: 1, image: '' },
-    { id: 5, name: 'QUÀ 05', quantity: 3, remaining: 3, weight: 3, color: '#fbe2d5', sort_order: 5, active: 1, image: '' },
-    { id: 6, name: 'QUÀ 06', quantity: 3, remaining: 3, weight: 3, color: '#fcd0df', sort_order: 6, active: 1, image: '' },
-    { id: 7, name: 'QUÀ 07', quantity: 3, remaining: 3, weight: 3, color: '#fce3d7', sort_order: 7, active: 1, image: '' },
-    { id: 8, name: 'QUÀ 08', quantity: 3, remaining: 3, weight: 3, color: '#e6d8ed', sort_order: 8, active: 1, image: '' }
+    { id: 1, name: 'Kem tay thơm - hoa cam cỏ', quantity: 3, remaining: 3, weight: 3, color: '#fcd3de', sort_order: 1, active: 1, image: './uploads/gifts/1.jpg' },
+    { id: 2, name: 'Kem tay thơm - bơ hạt mỡ', quantity: 2, remaining: 2, weight: 2, color: '#fbe2d5', sort_order: 2, active: 1, image: './uploads/gifts/2.jpg' },
+    { id: 3, name: 'Kem tay thơm - hoa anh đào', quantity: 2, remaining: 2, weight: 2, color: '#e4d3ec', sort_order: 3, active: 1, image: './uploads/gifts/3.jpg' },
+    { id: 4, name: 'Găng tay tẩy tế bào', quantity: 1, remaining: 1, weight: 0, color: '#fcd3de', sort_order: 4, active: 1, image: './uploads/gifts/4.jpg' },
+    { id: 5, name: 'Phấn má hồng', quantity: 1, remaining: 1, weight: 0, color: '#fbe2d5', sort_order: 5, active: 1, image: './uploads/gifts/5.jpg' },
+    { id: 6, name: 'Mặt nạ dừa tươi', quantity: 3, remaining: 3, weight: 3, color: '#fcd0df', sort_order: 6, active: 1, image: './uploads/gifts/6.jpg' },
+    { id: 7, name: 'Sửa rửa mặt tạo bọt', quantity: 5, remaining: 5, weight: 5, color: '#fce3d7', sort_order: 7, active: 1, image: './uploads/gifts/7.jpg' },
+    { id: 8, name: 'Mặt nạ dừa tươi - da dầu', quantity: 5, remaining: 5, weight: 5, color: '#e6d8ed', sort_order: 8, active: 1, image: './uploads/gifts/8.jpg' },
+    { id: 9, name: 'Mặt nạ dừa tươi - dưỡng ẩm', quantity: 3, remaining: 3, weight: 3, color: '#fcd3de', sort_order: 9, active: 1, image: './uploads/gifts/9.jpg' },
+    { id: 10, name: 'Mascara Browit', quantity: 2, remaining: 2, weight: 1, color: '#fce3d7', sort_order: 10, active: 1, image: './uploads/gifts/10.jpg' }
   ]
 };
 

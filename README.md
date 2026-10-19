@@ -54,7 +54,7 @@ PORT=3000
 ## Tính năng
 
 ### Website (/)
-- Login bằng LDAP (22 người cố định)
+- Login bằng LDAP (23 người cố định)
 - Vòng quay may mắn với Canvas animation
 - Hiệu ứng confetti khi trúng quà
 - Validate 1 lần quay / người

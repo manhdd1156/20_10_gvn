@@ -992,7 +992,7 @@ function buildHeartCollage(users, activeUser) {
   // Clear any existing avatar nodes (keep center core)
   container.querySelectorAll('.heart-avatar-node').forEach(n => n.remove());
 
-  const total = users.length > 0 ? users.length : 22;
+  const total = users.length > 0 ? users.length : 23;
   const isMobile = window.innerWidth <= 520;
   const w = isMobile ? 330 : 460;
   const h = isMobile ? 290 : 400;
